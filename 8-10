@@ -145,4 +145,52 @@ sum(diag(a))/sum(a)
 png(file = "model.png")
 plot(model)
 dev.off()
--------------------------------11-------------------------------------
+-------------------------------11a-------------------------------------
+x <- seq(0, 1, by =0.02)
+y <- qnorm(x, mean= 2, sd= 1)
+png(file = "qnorm1.png")
+plot(x, y)
+dev.off()
+
+y <- rnorm(50)
+png(file = "rnorm1.png")
+hist(y, main = "Normal Distribution")
+dev.off()
+---------------------------11b---------------------------
+x <- seq(0,50,by = 1)
+y <- dbinom(x, 50, 0.5)
+png(file = "dbinom.png")
+plot(x, y)
+dev.off()
+
+x <- pbinom(26,51,0.5)
+print(x)
+plot(x)
+
+x <- qbinom(0.25, 30, 1/2)
+print(x)
+plot(x)
+
+x <- rbinom(8,150,.4)
+print(x)
+plot(x)
+
+-------12------------------
+library("MASS")
+print(str(Cars93))
+car_data<- data.frame(Cars93$AirBags, Cars93$Type)
+car_data = table(Cars93$AirBags, Cars93$Type)
+print(car_data)
+smoothScatter(car_data)
+print(chisq.test(car_data))
+
+
+
+x<-c(0.593, 0.142, 0.329, 0.691, 0.231, 0.793, 0.519, 0.392, 0.418)
+t.test(x,alternative = "greater", mu=0.3)
+
+
+x <- rnorm(50, mean = 0, sd = 2)
+y <- rnorm(30, mean = 1, sd = 1)
+var.test(x,y)
+var.test(lm(x ~ 1), lm(y ~ 1))
